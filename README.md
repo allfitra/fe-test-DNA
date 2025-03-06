@@ -38,6 +38,6 @@
 
 ![Page 2](public/Page[2].png)
 
-## SALAM HANGAN
+## SALAM HANGAT
 
 Allfitra Fadjri

@@ -1,6 +1,22 @@
 # FrontEnd test Digital Nayaka Abhinaya
 
-## ScreenShot hasil running
+## 🚀 Tech Stack
+
+- Vue 3 - Frontend framework
+- Tailwind CSS - Styling
+- NewsAPI.org - News source
+- Vite - Fast development build
+
+## ⚙ Usage
+
+- 🏠 Homepage: Displays the latest news in a structured layout
+- 🔍 Search: Enter a keyword to filter news
+- 📜 Reading History:
+  - Click on Read More to open an article
+  - The article will be saved in History
+  - History persists even after refreshing the page
+
+## 📸 ScreenShot hasil running
 
 ### Halaman Utama
 
@@ -21,3 +37,7 @@
 ### Halaman untuk menampilkan semua data berita
 
 ![Page 2](public/Page[2].png)
+
+## SALAM HANGAN
+
+Allfitra Fadjri

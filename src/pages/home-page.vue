@@ -14,7 +14,6 @@ const fetchNews = async (query = "world") => {
   isLoading.value = true;
   news.value = await getDataNews(query);
   isLoading.value = false;
-  console.log(news);
 };
 
 const searchNews = async () => {
@@ -35,14 +34,14 @@ const chunkedNews = computed(() => {
   }
   return chunks;
 });
-
-console.log(chunkedNews);
 </script>
 
 <template>
   <div class="container mx-auto px-4">
     <div class="flex justify-between mb-4">
-      <h2 class="text-[35px] text-blue-700 font-bold">HOTs News</h2>
+      <h2 class="text-[35px] text-blue-700 font-bold">
+        <a href="/" class="font-bold"> HOTs News </a>
+      </h2>
       <form @submit.prevent="searchNews" class="w-[400px] relative">
         <label for="default-search" class="sr-only">Search</label>
         <div class="relative">
@@ -70,33 +69,41 @@ console.log(chunkedNews);
       <SceletonLoading />
       <SceletonLoading />
     </div>
-    <div v-for="(chunk, index) in chunkedNews" :key="index">
-      <div v-if="index == 0">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <MainCard :article="chunk[0]" />
+    <div v-else>
+      <div v-for="(chunk, index) in chunkedNews" :key="index">
+        <div v-if="index == 0">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <MainCard :article="chunk[0]" />
 
-          <div class="space-y-6">
-            <SideCard :article="chunk[1]" />
-            <SideCard :article="chunk[2]" />
+            <div class="space-y-6">
+              <SideCard :article="chunk[1]" />
+              <SideCard :article="chunk[2]" />
+            </div>
+            <div class="space-y-6">
+              <SideCard :article="chunk[3]" />
+              <SideCard :article="chunk[4]" />
+            </div>
           </div>
-          <div class="space-y-6">
-            <SideCard :article="chunk[3]" />
-            <SideCard :article="chunk[4]" />
+        </div>
+        <div v-if="index == 1">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-6">
+            <div class="space-y-6">
+              <SideCard :article="chunk[1]" />
+              <SideCard :article="chunk[2]" />
+            </div>
+            <div class="space-y-6">
+              <SideCard :article="chunk[3]" />
+              <SideCard :article="chunk[4]" />
+            </div>
+            <MainCard :article="chunk[0]" />
           </div>
         </div>
       </div>
-      <div v-if="index == 1">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-6">
-          <div class="space-y-6">
-            <SideCard :article="chunk[1]" />
-            <SideCard :article="chunk[2]" />
-          </div>
-          <div class="space-y-6">
-            <SideCard :article="chunk[3]" />
-            <SideCard :article="chunk[4]" />
-          </div>
-          <MainCard :article="chunk[0]" />
-        </div>
+
+      <div class="flex justify-end mt-4">
+        <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2">
+          <a href="/news-list" class="text-white"> More News </a>
+        </button>
       </div>
     </div>
 
